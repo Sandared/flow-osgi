@@ -20,6 +20,11 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
+			<groupId>io.jatoms</groupId>
+			<artifactId>flow.osgi.simpleui</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>org.osgi.enroute</groupId>
 			<artifactId>osgi-api</artifactId>
 			<type>pom</type>

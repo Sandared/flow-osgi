@@ -2,7 +2,9 @@ index: target/index.xml;name="flow.osgi.integration.app"
 
 -standalone: ${index}
 
--runrequires: osgi.identity;filter:='(osgi.identity=io.jatoms.flow.osgi.integration)'
+-runrequires: \
+	osgi.identity;filter:='(osgi.identity=io.jatoms.flow.osgi.integration)',\
+	bnd.identity;id='io.jatoms.flow.osgi.simpleui'
 -runfw: org.eclipse.osgi
 -runee: JavaSE-1.8
 
@@ -24,4 +26,8 @@ index: target/index.xml;name="flow.osgi.integration.app"
 	org.apache.felix.scr;version='[2.1.10,2.1.11)',\
 	org.jsoup;version='[1.10.3,1.10.4)',\
 	slf4j.api;version='[1.7.25,1.7.26)',\
-	org.apache.felix.http.jetty;version='[4.0.6,4.0.7)'
+	org.apache.felix.http.jetty;version='[4.0.6,4.0.7)',\
+	com.vaadin.flow.component.button;version='[1.2.1,1.2.2)',\
+	com.vaadin.flow.component.notification;version='[1.2.0,1.2.1)',\
+	com.vaadin.flow.component.orderedlayout;version='[1.2.0,1.2.1)',\
+	io.jatoms.flow.osgi.simpleui;version='[0.0.1,0.0.2)'

@@ -38,4 +38,11 @@ test-index: target/test-index.xml;name="flow.osgi.integration.app Test"
 	org.apache.felix.webconsole.plugins.ds;version='[2.0.8,2.0.9)',\
 	org.jsoup;version='[1.10.3,1.10.4)',\
 	org.osgi.util.function;version='[1.1.0,1.1.1)',\
-	slf4j.api;version='[1.7.25,1.7.26)'
+	slf4j.api;version='[1.7.25,1.7.26)',\
+	com.vaadin.flow.component.button;version='[1.2.1,1.2.2)',\
+	com.vaadin.flow.component.notification;version='[1.2.0,1.2.1)',\
+	com.vaadin.flow.component.orderedlayout;version='[1.2.0,1.2.1)',\
+	io.jatoms.flow.osgi.simpleui;version='[0.0.1,0.0.2)'
+-runrequires: \
+	bnd.identity;id='io.jatoms.flow.osgi.simpleui',\
+	bnd.identity;id='io.jatoms.flow.osgi.integration'

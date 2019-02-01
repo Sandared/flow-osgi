@@ -240,5 +240,6 @@ Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
   <modules>
     <module>flow.osgi.integration</module>
     <module>flow.osgi.integration.app</module>
+    <module>flow.osgi.simpleui</module>
   </modules>
 </project>
