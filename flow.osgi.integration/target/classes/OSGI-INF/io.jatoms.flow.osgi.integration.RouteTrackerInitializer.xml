@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="io.jatoms.flow.osgi.integration.RouteTrackerInitializer" activate="activate" deactivate="deactivate">
+  <implementation class="io.jatoms.flow.osgi.integration.RouteTrackerInitializer"/>
+</scr:component>

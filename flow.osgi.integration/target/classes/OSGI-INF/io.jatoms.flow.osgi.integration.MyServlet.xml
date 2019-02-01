@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="io.jatoms.flow.osgi.integration.MyServlet">
+  <property name="osgi.http.whiteboard.servlet.pattern" type="String">/myservlet</property>
+  <service scope="prototype">
+    <provide interface="javax.servlet.Servlet"/>
+  </service>
+  <implementation class="io.jatoms.flow.osgi.integration.MyServlet"/>
+</scr:component>

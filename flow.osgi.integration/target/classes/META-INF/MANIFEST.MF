@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1549029938765
+Bundle-ManifestVersion: 2
+Bundle-Name: flow.osgi.integration
+Bundle-SymbolicName: io.jatoms.flow.osgi.integration
+Bundle-Version: 0.0.1.201902011405
+Created-By: 1.8.0_152 (Oracle Corporation)
+Import-Package: com.vaadin.flow.component;version="[1.2,2)",com.vaadin
+ .flow.router;version="[1.2,2)",com.vaadin.flow.server.startup;version
+ ="[1.2,2)",javax.servlet;version="[3.1,4)",javax.servlet.http;version
+ ="[3.1,4)",org.osgi.framework;version="[1.9,2)",org.osgi.framework.wi
+ ring;version="[1.2,2)",org.osgi.util.tracker;version="[1.5,2)"
+Private-Package: io.jatoms.flow.osgi.integration
+Provide-Capability: osgi.service;objectClass:List<String>="javax.servl
+ et.Servlet"
+Require-Capability: osgi.service;filter:="(objectClass=java.lang.Class
+ )";effective:=active,osgi.extender;filter:="(&(osgi.extender=osgi.com
+ ponent)(version>=1.4.0)(!(version>=2.0.0)))",osgi.implementation;filt
+ er:="(&(osgi.implementation=osgi.http)(version>=1.1.0)(!(version>=2.0
+ .0)))",osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Service-Component: OSGI-INF/io.jatoms.flow.osgi.integration.FlowOSGiTr
+ ackerInitializer.xml,OSGI-INF/io.jatoms.flow.osgi.integration.MyServl
+ et.xml,OSGI-INF/io.jatoms.flow.osgi.integration.OSGiRouteRegistry.xml
+Tool: Bnd-4.1.0.201810181252
+
