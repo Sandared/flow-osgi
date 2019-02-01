@@ -1,7 +1,6 @@
 package io.jatoms.flow.osgi.integration;
 
 import java.lang.annotation.Annotation;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -20,6 +19,7 @@ import org.osgi.util.tracker.BundleTracker;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouteAlias;
 
 // This tracker adds services under the Class interface
 @Capability(namespace="osgi.service", attribute= {"objectClass:List<String>=\"java.lang.Class\""})
@@ -63,21 +63,33 @@ public class FlowOsgiTracker extends BundleTracker<List<ServiceRegistration<Clas
 					// if there are any classes with an annotation
 					if (!routes.isEmpty()) {
 						for (Class<?> route : routes) {
-							
-							// create additional props to make this service better targetable by other @Components
-							Hashtable<String, String> props = new Hashtable<String, String>();
-							props.put(FlowOsgiConstants.Annotation, FlowOsgiConstants.Route);
-							
-							// register the found class as service so other @Components can find them
-							ServiceRegistration<Class> registration = bundle.getBundleContext()
-									.registerService(Class.class, route, props);
-							registrations.add(registration);
+							registrations.add(registerService(bundle, route, FlowOsgiConstants.Route));
 						}
 					}
+					
+					routes = scanClassesForAnnotation(bundle, classNames, RouteAlias.class, Component.class);
+					
+					// if there are any classes with an annotation
+					if (!routes.isEmpty()) {
+						for (Class<?> route : routes) {
+							registrations.add(registerService(bundle, route, FlowOsgiConstants.Route));
+						}
+					}
+					
+					// TODO: add other annotations or classes that we are interested in
 				}
 			}
 		}
 		return registrations;
+	}
+
+	private ServiceRegistration<Class> registerService(Bundle bundle, Class<?> service, String annotationType) {
+		// create additional props to make this service better targetable by other @Components
+		Hashtable<String, String> props = new Hashtable<String, String>();
+		props.put(FlowOsgiConstants.Annotation, annotationType);
+		
+		// register the found class as service so other @Components can find them
+		return  bundle.getBundleContext().registerService(Class.class, service, props);
 	}
 
 	@Override

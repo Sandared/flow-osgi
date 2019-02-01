@@ -10,7 +10,7 @@ import org.osgi.service.http.whiteboard.propertytypes.HttpWhiteboardListener;
 
 import com.vaadin.flow.server.startup.RouteRegistry;
 
-@Component
+@Component(immediate=true)
 @HttpWhiteboardListener
 public class FlowOsgiServletContextListener implements ServletContextListener {
 	
@@ -27,5 +27,4 @@ public class FlowOsgiServletContextListener implements ServletContextListener {
 		// TODO Auto-generated method stub
 
 	}
-
 }
