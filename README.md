@@ -22,9 +22,12 @@ The idea is as follows:
 @Component(configurationPolicy=ConfigurationPolicy.REQUIRE)
 public class MainView extends VerticalLayout {
 
+    @Reference
+    GreeterService greeter;
+
     public MainView() {
         Button button = new Button("Click me",
-                event -> Notification.show("Clicked!"));
+                event -> Notification.show(greeter.greet()));
         add(button);
     }
 }
