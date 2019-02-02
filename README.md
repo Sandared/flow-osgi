@@ -18,7 +18,6 @@ The idea is as follows:
 
 ```java
 @Route("")
-// This prevents SCR from instantiating this component which should be done by vaadin-osgi-intgration via config admin
 @Component(configurationPolicy=ConfigurationPolicy.REQUIRE)
 public class MainView extends VerticalLayout {
 
