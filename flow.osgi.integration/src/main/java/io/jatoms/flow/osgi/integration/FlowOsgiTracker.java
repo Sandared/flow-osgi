@@ -1,6 +1,7 @@
 package io.jatoms.flow.osgi.integration;
 
 import java.lang.annotation.Annotation;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -21,6 +22,8 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 
+import static io.jatoms.flow.osgi.integration.FlowOsgiConstants.*;
+
 // This tracker adds services under the Class interface
 @Capability(namespace="osgi.service", attribute= {"objectClass:List<String>=\"java.lang.Class\""})
 public class FlowOsgiTracker extends BundleTracker<List<ServiceRegistration<Class>>> {
@@ -33,8 +36,8 @@ public class FlowOsgiTracker extends BundleTracker<List<ServiceRegistration<Clas
 
 	@Override
 	public List<ServiceRegistration<Class>> addingBundle(Bundle bundle, BundleEvent event) {
-//		if(bundle == trackerBundle)
-//			return null;
+		if(bundle == trackerBundle)
+			return null;
 		// maybe skip vaadin bundles hardcoded?
 
 		BundleWiring wiring = bundle.adapt(BundleWiring.class);
@@ -63,7 +66,7 @@ public class FlowOsgiTracker extends BundleTracker<List<ServiceRegistration<Clas
 					// if there are any classes with an annotation
 					if (!routes.isEmpty()) {
 						for (Class<?> route : routes) {
-							registrations.add(registerService(bundle, route, FlowOsgiConstants.Route));
+							registrations.add(registerService(bundle, route, Route));
 						}
 					}
 					
@@ -72,7 +75,7 @@ public class FlowOsgiTracker extends BundleTracker<List<ServiceRegistration<Clas
 					// if there are any classes with an annotation
 					if (!routes.isEmpty()) {
 						for (Class<?> route : routes) {
-							registrations.add(registerService(bundle, route, FlowOsgiConstants.Route));
+							registrations.add(registerService(bundle, route, RouteAlias));
 						}
 					}
 					
@@ -86,7 +89,7 @@ public class FlowOsgiTracker extends BundleTracker<List<ServiceRegistration<Clas
 	private ServiceRegistration<Class> registerService(Bundle bundle, Class<?> service, String annotationType) {
 		// create additional props to make this service better targetable by other @Components
 		Hashtable<String, String> props = new Hashtable<String, String>();
-		props.put(FlowOsgiConstants.Annotation, annotationType);
+		props.put(Annotation, annotationType);
 		
 		// register the found class as service so other @Components can find them
 		return  bundle.getBundleContext().registerService(Class.class, service, props);
@@ -134,7 +137,7 @@ public class FlowOsgiTracker extends BundleTracker<List<ServiceRegistration<Clas
 				Class<?> clazz = bundle.loadClass(className);
 				if (clazz.isAnnotationPresent(annotation)) {
 					if(type != null) {
-						if (Component.class.isAssignableFrom(clazz)) {
+						if (type.isAssignableFrom(clazz)) {
 							classes.add(clazz);
 						} else {
 							throw new IllegalArgumentException("Class annotated with " + annotation.getSimpleName() + " is not a " + type.getSimpleName());

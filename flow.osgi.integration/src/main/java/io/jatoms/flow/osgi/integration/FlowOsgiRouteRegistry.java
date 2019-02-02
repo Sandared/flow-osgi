@@ -18,12 +18,10 @@ public class FlowOsgiRouteRegistry extends RouteRegistry {
 			policy=ReferencePolicy.DYNAMIC,
 			policyOption=ReferencePolicyOption.GREEDY)
 	void addRoute(Class route) {
-		String test = "";
 		// TODO: add route to navigation targets, maybe switch to vaadin 13 or snapshot version as 12 does not support dynamic routes?
 	}
 	
 	void removeRoute(Class route) {
-		String test = "";
 	}
 	
 	@Reference(target="(" + Annotation + "=" + RouteAlias + ")", 
@@ -31,12 +29,12 @@ public class FlowOsgiRouteRegistry extends RouteRegistry {
 			policy=ReferencePolicy.DYNAMIC,
 			policyOption=ReferencePolicyOption.GREEDY)
 	void addRouteAlias(Class route) {
-		String test = "";
 		// TODO: add route to navigation targets, maybe switch to vaadin 13 or snapshot version as 12 does not support dynamic routes?
 	}
 	
 	void removeRouteAlias(Class route) {
-		String test = "";
 	}
+	
+	// we can add here anything else that needs to be tracked... e.g., ErrorPages ?
 
 }

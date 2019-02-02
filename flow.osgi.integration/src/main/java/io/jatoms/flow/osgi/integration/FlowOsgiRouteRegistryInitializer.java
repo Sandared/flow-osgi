@@ -13,9 +13,13 @@ import org.osgi.service.http.whiteboard.propertytypes.HttpWhiteboardListener;
 
 import com.vaadin.flow.server.startup.RouteRegistry;
 
+// TODO: if registered this way this SCL SHOULD work and use the default ServletContext
+// Somehow this does not work and the SCL is never called by the HTTP Whiteboard Service. 
+// I've already asked on the OSGi mailing list, but not received an answer yet 
+
 @Component(immediate=true)
 @HttpWhiteboardListener
-public class FlowOsgiServletContextListener implements ServletContextListener {
+public class FlowOsgiRouteRegistryInitializer implements ServletContextListener {
 	
 	@Reference
 	RouteRegistry routeRegistry;
