@@ -31,3 +31,6 @@ public class MainView extends VerticalLayout {
     }
 }
 ```
+
+This is an abstract view of the the logic flow of the solution:
+![Logic Flow](https://github.com/Sandared/flow-osgi/blob/master/Unbenannt.PNG)
