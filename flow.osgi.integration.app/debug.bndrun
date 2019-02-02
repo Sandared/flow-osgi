@@ -46,3 +46,5 @@ test-index: target/test-index.xml;name="flow.osgi.integration.app Test"
 -runrequires: \
 	bnd.identity;id='io.jatoms.flow.osgi.simpleui',\
 	bnd.identity;id='io.jatoms.flow.osgi.integration'
+-runfw: org.eclipse.osgi;version='[3.13.100.v20180827-1536,3.13.100.v20180827-1536]'
+-runee: JavaSE-1.8
