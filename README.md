@@ -8,6 +8,13 @@ Currently the efforts of Vaadin to make Flow (Vaadin 10+) OSGi compatible center
 
 Built on the premise, that one wants to develop a Flow application in OSGi I assume that this developer then wants to be able to define his `@Route`/`@RouteAlias`/(other?) annotated classes also to be a `@Component` in OSGi.
 
+## Contribute
+You want to help making this work?
+* PRs are highly welcome
+* Any question/suggestion? -> Submit an issue
+* I've also opened an [issue at Flow](https://github.com/vaadin/flow/issues/5017) in order to get feedback from Vaadin directly on this integration.
+* Any other stuff? Write me on [Twitter](https://twitter.com/SanfteSchorle)
+
 ## HOW?
 The idea is as follows:
 * Replace `ServletContainerInitializers` that are used in Flow to initialize a `RouteRegistry` with a corresponding `BundleTracker` that is able to track all the classes with `@Route`/`RouteAlias`/etc.. see [FlowOsgiTracker](https://github.com/Sandared/flow-osgi/blob/master/flow.osgi.integration/src/main/java/io/jatoms/flow/osgi/integration/FlowOsgiTracker.java) and [FlowOsgiInitializer](https://github.com/Sandared/flow-osgi/blob/master/flow.osgi.integration/src/main/java/io/jatoms/flow/osgi/integration/FlowOsgiInitializer.java)
