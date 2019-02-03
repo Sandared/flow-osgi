@@ -25,7 +25,7 @@ The idea is as follows:
 
 ```java
 @Route("")
-@Component(configurationPolicy=ConfigurationPolicy.REQUIRE)
+@Component(factory="io.jatoms.example.MainView")
 public class MainView extends VerticalLayout {
 
     @Reference
