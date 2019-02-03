@@ -10,7 +10,7 @@ import com.vaadin.flow.router.Route;
 
 @Route("")
 // This prevents SCR from instantiating this component which should be done by vaadin osgi intgration via config admin
-@Component(configurationPolicy=ConfigurationPolicy.REQUIRE)
+@Component(factory="io.jatoms.flow.osgi.simpleui.MainView")
 public class MainView extends VerticalLayout {
 
     public MainView() {

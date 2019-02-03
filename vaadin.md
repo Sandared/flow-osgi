@@ -238,7 +238,7 @@ BootstrapHandler --> BootstrapHandler : createAndInitUI(uiClass, request, respon
 ... viel Initialisierungsgedöns aber wsl. erst mal uninteressant ...
 BootstrapHandler --> UI : getRouter()
 UI --> BootstrapHandler : router
-BootstrapHandler --> Router : initializeUI(ui, request) 
+BootstrapHandler --> Router : initializeUI(ui, request)
 ```
 
 ## OSGiServletDeployer
@@ -249,3 +249,31 @@ BootstrapHandler --> Router : initializeUI(ui, request)
 ## OSGiRouteRegistry
 
 ## OSGiInstantiator
+
+# Unsere Lösung
+
+```puml
+OsgiContainer --> FlowOsgiInitializer : activate(bundleContext)
+FlowOsgiInitializer --> FlowOsgiTracker : open()
+... ...
+OsgiContainer --> FlowOsgiRouteRegistry : activate()
+... ...
+OsgiContainer --> RouteRegistryInitializer : set @Reference routeRegistry
+OsgiContainer --> RouteRegistryInitializer : activate()
+RouteRegistryInitializer --> ServletContext : setAttribute(RouteRegistry.name, routeRegistry)
+... ...
+OsgiContainer --> FlowOsgiTracker : addingBundle(bundle)
+FlowOsgiTracker --> OsgiContainer : registerService(routeAnnotatedClass)
+... ...
+OsgiContainer --> FlowOsgiRouteRegistry : addRoute(routeAnnotatedClass)
+```
+
+```puml
+VaadinServlet --> RouteRegistry : getInstance(context)
+RouteRegistry --> ServletContext : getAttribute(RouteRegistry.name)
+... ...
+VaadinServlet --> BootstrapHandler : synchronizedHandleRequest(session, request, response)
+BootstrapHandler --> Router : initializeUI(ui, request)
+Router --> AbstractNavigationStateRenderer : navigate()
+AbstractNavigationStateRenderer --> FlowOsgiInstantiator : createRouteTarget(routeAnnotatedClass)
+```
