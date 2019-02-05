@@ -1,7 +1,7 @@
 # FLOW OSGi Integration
 
 ## WHAT
-Trying to enhance current Flow OSGi integration, so that `@Route`/`@RouteAlias` annotated classes can be `@Component` annotated too in an OSGi container
+Trying to enhance current Flow OSGi integration, so that `@Route`/`@RouteAlias` annotated classes can be components (`@Component` annotated classes) too in an OSGi container
 
 ## WHY?
 Currently the efforts of Vaadin to make Flow (Vaadin 10+) OSGi compatible center around being able to run an existing Flow Application in an OSGi container. This is a great step forward, but might not be sufficient for people who do not want to port an existing Vaadin application into an OSGi container, but develop a Vaadin application as an OSGi  enabled application, e.g., want to make use of OSGi's dependency injection mechanisms, i.e., Declarative Services.
