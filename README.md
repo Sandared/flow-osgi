@@ -10,7 +10,7 @@ Built on the premise, that one wants to develop a Flow application in OSGi I ass
 
 ## Contribute
 You want to help making this work?
-* PRs are highly welcome, just [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://github.com/Sandared/flow-osgi/blob/master/flow.osgi.integration/src/main/java/io/jatoms/flow/osgi/integration/FlowOsgiInitializer.java) and start coding/browsing/whatever ;)
+* PRs are highly welcome, just [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/Sandared/flow-osgi/blob/master/flow.osgi.integration/src/main/java/io/jatoms/flow/osgi/integration/FlowOsgiInitializer.java) and start coding/browsing/whatever ;)
 * Any question/suggestion? -> Submit an issue
 * I've also opened an [issue at Flow](https://github.com/vaadin/flow/issues/5017) in order to get feedback from Vaadin directly on this integration.
 * Any other stuff? Write me on [Twitter](https://twitter.com/SanfteSchorle)
