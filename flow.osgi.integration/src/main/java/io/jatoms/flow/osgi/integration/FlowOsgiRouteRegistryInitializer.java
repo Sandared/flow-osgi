@@ -11,7 +11,8 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
 
-import com.vaadin.flow.server.startup.RouteRegistry;
+import com.vaadin.flow.server.RouteRegistry;
+
 
 // TODO: if registered this way this SCL SHOULD work and use the default ServletContext
 // Somehow this does not work and the SCL is never called by the HTTP Whiteboard Service. 

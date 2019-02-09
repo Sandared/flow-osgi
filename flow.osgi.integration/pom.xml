@@ -27,7 +27,7 @@
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-core</artifactId>
-			<version>${vaadin.version}</version>
+			<version>13.0.0.beta1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi.enroute</groupId>

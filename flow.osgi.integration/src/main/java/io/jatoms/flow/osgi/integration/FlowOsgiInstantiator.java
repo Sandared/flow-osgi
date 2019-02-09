@@ -60,7 +60,7 @@ public class FlowOsgiInstantiator extends DefaultInstantiator {
 			
 			if(componentFactories.size() != 1) {
 				// there is something wrong with the factory name given for this class, e.g., typo?
-				System.err.println("Factory name of " + routeTargetType.getSimpleName() + " does not match it full qualified class name");
+				System.err.println("Factory name of " + routeTargetType.getSimpleName() + " does not match its fully qualified class name");
 			}
 			
 			// Now create a new component with no additional properties
@@ -80,7 +80,5 @@ public class FlowOsgiInstantiator extends DefaultInstantiator {
 			e.printStackTrace();
 			throw new RuntimeException("Filter to search for ComponentFactory for " + routeTargetType.getSimpleName() + " was invalid! Filter was " + filter);
 		}
-		
 	}
-
 }

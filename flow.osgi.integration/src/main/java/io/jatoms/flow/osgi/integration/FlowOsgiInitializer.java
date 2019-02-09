@@ -22,12 +22,12 @@ import com.vaadin.flow.server.startup.ServletDeployer;
 @Component
 public class FlowOsgiInitializer{
 	
-	private FlowOsgiTracker tracker;
+	private FlowOsgiRouteTracker tracker;
 	private List<ServiceRegistration<ServletContextListener>> vaadinSCLs = new ArrayList<ServiceRegistration<ServletContextListener>>();
 	
 	@Activate
 	void activate (BundleContext context) {
-		tracker = new FlowOsgiTracker(context);
+		tracker = new FlowOsgiRouteTracker(context);
 		tracker.open();
 		registerFlowServletContextListeners(context);
 	}
