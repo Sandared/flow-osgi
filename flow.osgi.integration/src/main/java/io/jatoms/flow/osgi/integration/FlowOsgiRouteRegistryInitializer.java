@@ -9,6 +9,7 @@ import javax.servlet.ServletContextListener;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.propertytypes.ServiceRanking;
 import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
 
 import com.vaadin.flow.server.RouteRegistry;
@@ -26,6 +27,7 @@ import com.vaadin.flow.server.RouteRegistry;
 // @Component(property= {HttpWhiteboardConstants.HTTP_WHITEBOARD_LISTENER + "=true"})
 
 @Component(property= {HttpWhiteboardConstants.HTTP_WHITEBOARD_LISTENER + "=true"})
+@ServiceRanking(Integer.MAX_VALUE) // makes sure this is called before ServletDeployer and others
 public class FlowOsgiRouteRegistryInitializer implements ServletContextListener {
 	
 	@Reference
