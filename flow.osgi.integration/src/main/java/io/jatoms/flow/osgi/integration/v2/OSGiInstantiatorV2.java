@@ -30,18 +30,18 @@ public class OSGiInstantiatorV2 extends DefaultInstantiator{
 		// Get the bundle context of the given class
 		BundleContext context = FrameworkUtil.getBundle(routeTargetType).getBundleContext();
 		
+		// We filter all possible references for the implementation class name.
+		String filter = "(" + ComponentConstants.COMPONENT_NAME + "=" + routeTargetType.getName() + ")";
 		try {
-			// We filter all possible references for the implementation class name.
-			String filter = "(" + ComponentConstants.COMPONENT_NAME + "=" + routeTargetType.getName() + ")";
 			Collection<ServiceReference<Component>> refs = context.getServiceReferences(Component.class, filter);
 			
 			if(refs != null && refs.size() == 1) {
 				ServiceObjects<Component> so = context.getServiceObjects(refs.iterator().next());
-				
-				ServiceReference<Component> ref = so.getServiceReference();
-				
+				// Not sure why a cast is needed... it's late and I'm tired
+				return (T) so.getService();
 			} else {
 				System.err.println("There should be exactly one service reference for this implementation class");
+				return null;
 			}
 		} catch (InvalidSyntaxException e) {
 			e.printStackTrace();
